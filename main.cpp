@@ -8,6 +8,7 @@ using namespace std;
 
 int main()
 {
+
     int idTemp;
     string nombreTemp;
 
@@ -28,8 +29,6 @@ while(arActores>>idTemp)
     iActores++;
 }
 arActores.close();
-
-
 
 arPeliculas.open("peliculas.txt");
 int numPel, anio, duracion, cantActores, iPeliculas=0;
@@ -63,34 +62,55 @@ while(arPeliculas>>numPel)
     iPeliculas++;
 }
 arPeliculas.close();
-//int funcionesD,sala, hr, minut;
-//string cveFuncion;
-//cout<<"cuantas funciones habra disponibles?"<<endl;
-//cin>>funcionesD;
-//
-//for(int k=0;k<funcionesD;k++)
-//{
-//    cout<<"Ingrese la clave de la funcion #"<<k+1<<endl;
-//    cin>>cveFuncion;
-//    cout<<"Ingrese el numero de pelicula de la funcion #"<<k+1<<endl;
-//    cin>>numPel;
-//    cout<<"Ingrese la sala de la funcion #"<<k+1<<endl;
-//    cin>>sala;
-//    cout<<"Ingrese la hora de la funcion #"<<k+1<<" (hr)"<<endl;
-//    cin>>hr;
-//    cout<<"Ingrese la hora de la funcion #"<<k+1<<" (min)"<<endl;
-//    cin>>minut;
-//    hora h1(hr,minut);
-//    arrFunciones[k].setCveFuncion(cveFuncion);
-//    arrFunciones[k].setNumPeli(numPel);
-//    arrFunciones[k].setSala(sala);
-//    arrFunciones[k].setHora(h1);
-//}
+int funcionesD,sala, hr, minut,z=0;
+string cveFuncion;
+cout<<"Cuantas funciones habra disponibles?"<<endl;
+cin>>funcionesD;
+temp=false;
+for(int k=0;k<funcionesD;k++)
+{
+    cout<<"Ingrese la clave de la funcion #"<<k+1<<endl;
+    cin>>cveFuncion;
+        do{
+                z=0;
+            cout<<"Ingrese el numero de pelicula de la funcion #"<<k+1<<endl;
+            cin>>numPel;
+            do{
+            if(arrPeliculas[z].getNumPeli()!=numPel)
+            {
+//                arrFunciones[k].setNombrePeli(arrPeliculas[y].getTitulo());
+                temp=false;
+            }
+            else
+            {
+                temp=true;
+            }
+            z++;
+            }while(temp==false && z<20);
+    }while(temp!=true);
 
+
+    cout<<"Ingrese la sala de la funcion #"<<k+1<<endl;
+    cin>>sala;
+    cout<<"Ingrese la hora de la funcion #"<<k+1<<" (hr)"<<endl;
+    cin>>hr;
+    cout<<"Ingrese la hora de la funcion #"<<k+1<<" (min)"<<endl;
+    cin>>minut;
+    hora h1(hr,minut);
+    arrFunciones[k].setCveFuncion(cveFuncion);
+    arrFunciones[k].setNumPeli(numPel);
+    arrFunciones[k].setSala(sala);
+    arrFunciones[k].setHora(h1);
+
+}
+
+//for(int j=0;j<iActores;j++)
+//    arrActores[j].muestra();
 //for(int g=0;g<iPeliculas;g++)
 //    arrPeliculas[g].muestra();
-for(int j=0;j<iActores;j++)
-    arrActores[j].muestra();
+for(int h=0;h<funcionesD;h++)
+    arrFunciones[h].muestra();
+
 }
 
 
